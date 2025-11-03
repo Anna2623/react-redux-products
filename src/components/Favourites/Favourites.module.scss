@@ -1,0 +1,65 @@
+@import '../../variables.scss';
+
+.container{
+	width:100%;
+	display: flex;
+	justify-content: right;
+	align-items: center;
+}
+
+.button{
+	display:flex;
+	justify-content: left;
+	gap:10px;
+	align-items: center;
+	padding: 4px 16px;
+	border:3px solid $orange;
+	border-radius: 20px;
+	
+	background-color: $orange;
+	color:white;
+	opacity: 70%;
+
+	font-size: 16px;
+	text-transform:uppercase;
+
+	cursor: pointer;
+	transition: opacity 0.15s ease-in-out;
+
+
+	svg {
+		position: relative;
+	
+		width:36px;
+		height:36px;
+
+		fill: $white;
+		transition: all 0.15s ease-in-out;
+	}
+
+	&:hover {
+		opacity: 90%;
+	}
+  
+	&:active {
+		opacity: 100%;
+	}
+	&.active{
+		opacity: 90%;
+	}
+}
+
+.counter {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 24px;
+	height: 24px;
+	padding: 0 6px;
+	margin-left: 8px;
+	background-color: $white;
+	color: $violet;
+	border-radius: 12px;
+	font-size: 14px;
+	font-weight: bold;
+}

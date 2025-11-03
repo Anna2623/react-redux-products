@@ -1,0 +1,76 @@
+@import '../../variables.scss';
+
+.container{
+	display:flex;
+	flex-direction: column;
+	justify-self: center;
+	width: 280px;
+	min-height: 400px;
+	padding: 10px;
+	margin-bottom: 65px;
+	border-radius: 20px;
+	background-color: $white;
+	text-align: center;
+}
+
+.clearIcon{
+	align-self: flex-end;
+	margin: 6px 4px 10px;
+	opacity: 25%;
+	cursor:pointer;
+	transition: all $duration ease-in-out;
+
+	&:hover {
+	opacity: 100%;
+	}
+
+	&:active {
+		opacity: 100%;
+	}
+}
+
+.image{
+	align-self: center;
+	width: 220px;
+	height: 220px;
+	object-fit: cover;
+	margin-bottom: 20px;
+}
+
+.character{
+	margin-bottom: auto;
+	color: #000;
+	font-weight: 600;
+	text-transform: capitalize;
+}
+
+.functions{
+	display: flex;
+	margin-left: 10px;
+}
+
+.button{
+	border:none;
+	background-color:transparent;
+	opacity: 25%;
+	
+	cursor: pointer;
+	transition: opacity $duration ease-in-out;
+
+	svg {
+		transition: all $duration ease-in-out;
+	}
+  
+	&:hover {
+	  opacity: 90%;
+	}
+  
+	&:active {
+		opacity: 100%;
+	}
+
+	&.liked {
+		opacity: 100%;
+	}
+}
+
