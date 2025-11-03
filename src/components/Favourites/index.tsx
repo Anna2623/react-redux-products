@@ -1,13 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilterStatus } from '../../redux/slices/productListSlice';
+import { RootState } from '../../types';
 import styles from './Favourites.module.scss';
 import cx from 'classnames';
 
-
-const Favourites = () => {
-  const filterStatus = useSelector((state) => state.productList.filterStatus);
-  const items = useSelector((state) => state.productList.items);
+const Favourites: React.FC = () => {
+  const filterStatus = useSelector((state: RootState) => state.productList.filterStatus);
+  const items = useSelector((state: RootState) => state.productList.items);
   const dispatch = useDispatch();
   const filterStyle = filterStatus ? styles.active : '';
   
@@ -16,7 +16,7 @@ const Favourites = () => {
   return (
     <div className={styles.container}>
       <button
-        onClick = {() => dispatch(setFilterStatus())}
+        onClick={() => dispatch(setFilterStatus())}
         className={cx(styles.button, filterStyle)}
       >
         <svg

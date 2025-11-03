@@ -1,12 +1,25 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLikeStatus } from '../../redux/slices/productListSlice';
 import styles from './ProductDetails.module.scss';
 
-const ProductDetails = () => {
-  const [id, setId] = useState(null);
-  const items = useSelector((state) => state.productList.items)
-  const dispatch = useDispatch()
+interface ProductItem {
+  id: string | number;
+  imgUrl: string;
+  name: string;
+  liked: boolean;
+}
+
+interface RootState {
+  productList: {
+    items: ProductItem[];
+  };
+}
+
+const ProductDetails: React.FC = () => {
+  const [id, setId] = useState<string | null>(null);
+  const items = useSelector((state: RootState) => state.productList.items);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const parseId = () => {
@@ -14,20 +27,20 @@ const ProductDetails = () => {
       const parts = hash.split('/');
       if (parts.length >= 3) setId(parts[2]);
       else setId(null);
-    }
+    };
     parseId();
     window.addEventListener('hashchange', parseId);
     return () => window.removeEventListener('hashchange', parseId);
-  },[])
+  }, []);
 
-  if (!id) return <div className={styles.container}>Продукт не найден</div>
+  if (!id) return <div className={styles.container}>Продукт не найден</div>;
 
   const product = items.find(i => String(i.id) === String(id));
-  if (!product) return <div className={styles.container}>Продукт не найден</div>
+  if (!product) return <div className={styles.container}>Продукт не найден</div>;
 
   const onToggleLike = () => {
-    dispatch(setLikeStatus(product.id))
-  }
+    dispatch(setLikeStatus(String(product.id)));
+  };
 
   return (
     <div className={styles.container}>
@@ -61,7 +74,7 @@ const ProductDetails = () => {
         <p>ID: {product.id}</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ProductDetails;

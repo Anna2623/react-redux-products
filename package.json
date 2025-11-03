@@ -1,6 +1,7 @@
 {
   "name": "react-redux-products",
   "version": "0.1.0",
+  "homepage": "https://Anna2623.github.io/react-redux-products",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
@@ -42,5 +43,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.10.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "typescript": "^4.9.5"
   }
 }

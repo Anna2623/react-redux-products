@@ -5,4 +5,6 @@ export const store = configureStore({
   reducer: {
     productList: productListReducer
   }
-})
+});
+
+export type AppStore = ReturnType<typeof store.getState>;

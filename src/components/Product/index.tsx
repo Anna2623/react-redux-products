@@ -4,16 +4,32 @@ import { removeItem, setLikeStatus } from '../../redux/slices/productListSlice';
 import cx from 'classnames';
 import styles from './Product.module.scss';
 
+interface ProductItem {
+  id: string;
+  imgUrl: string;
+  name: string;
+  liked: boolean;
+}
 
-const Product = ({ id}) => {
+interface RootState {
+  productList: {
+    items: ProductItem[];
+  };
+}
+
+interface Props {
+  id: string;
+}
+
+const Product: React.FC<Props> = ({ id }) => {
   const dispatch = useDispatch();
-  const product = useSelector((state) => state.productList.items.find(item => item.id === id))
+  const product = useSelector((state: RootState) => state.productList.items.find(item => item.id === id));
 
-  const onClickDelete = (e) => {
+  const onClickDelete = (e: React.MouseEvent) => {
     e.stopPropagation();
     dispatch(removeItem(id));
   }
-  const onChangeLikeStatus = (e) => {
+  const onChangeLikeStatus = (e: React.MouseEvent) => {
     e.stopPropagation();
     dispatch(setLikeStatus(id))
   }
@@ -21,6 +37,8 @@ const Product = ({ id}) => {
   const onOpenProduct = () => {
     window.location.hash = `#/product/${id}`;
   }
+
+  if (!product) return null;
 
   const likeStyle = product.liked ? styles.liked : '';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ThemeToggle.module.scss';
 
-const ThemeToggle = () => {
+const ThemeToggle: React.FC = () => {
   const [isDark, setIsDark] = React.useState(false);
 
   const toggleTheme = () => {
